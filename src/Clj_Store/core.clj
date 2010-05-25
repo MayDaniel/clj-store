@@ -4,7 +4,6 @@
 
 ;; "s-" is used a prefix to avoid definition conflicts.
 ;; The paramater "file" may be absolute or relative
-;; based simply on preference.
 
 (defn s-new [file]
   "Creates a new file with the specified name."
