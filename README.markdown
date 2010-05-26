@@ -29,4 +29,4 @@ Wrap commands with `with-store`.
 
 ## License
 
-Clj-Store is licended under the Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
+Clj-Store is licensed under the Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
