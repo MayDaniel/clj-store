@@ -16,7 +16,7 @@ Wrap commands with `with-store`.
 * `(s-add hmap)`               - "Inserts new key/vals or updates the value of already existing ones an arbitrary number of key/vals.
 * `(s-update hmap)`            - "Updates the value of already existing keys."
 
-`(with-store cabinet 
+`(with-store "foo.bar"
    (& body ...))`
 
 ## Installation
