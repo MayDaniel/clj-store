@@ -1,4 +1,4 @@
-(defproject Clj-Store "1.0.0-SNAPSHOT"
+(defproject Clj-Store "0.1.0"
   :description "A small, superficial read/write key/val configuration utility."
   :dependencies [[org.clojure/clojure "1.1.0"]
                  [org.clojure/clojure-contrib "1.1.0"]]
