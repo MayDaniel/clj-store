@@ -27,6 +27,11 @@
   (let [f (-> file slurp*)]
     (if (empty? f) {} (read-string f))))
 
+(defn s-clean
+  "Removes the contents of a file."
+  [file]
+  (spit file ""))
+
 (defn s-keys
   "Returns a sequence of the keys in the file."
   []	
