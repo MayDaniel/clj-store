@@ -29,7 +29,7 @@
 
 (defn s-keys
   "Returns a sequence of the keys in the file."
-  []
+  []	
   (-> *store* s-read keys))
 
 (defn s-vals
