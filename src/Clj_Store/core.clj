@@ -17,7 +17,7 @@
   "Creates - if one does not already exist - a new file, and evaluates
   the body."
   [file & body]
-  (s-new conf)
+  (s-new file)
   `(binding [*store* ~file]
      ~@body))
 
