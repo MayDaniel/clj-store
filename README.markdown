@@ -4,7 +4,7 @@ A small, superficial read/write key/val configuration utility.
 
 ## Usage
 
-Wrap commands with 'with-store'.
+Wrap commands with `with-store`.
 
 * `(s-keys)`                   - "Returns a sequence of the store's keys."
 * `(s-vals)`                   - "Returns a sequence of the store's vals."
@@ -16,8 +16,8 @@ Wrap commands with 'with-store'.
 * `(s-add hmap)`               - "Inserts new key/vals or updates the value of already existing ones an arbitrary number of key/vals.
 * `(s-update hmap)`            - "Updates the value of already existing keys."
 
-    (with-store cabinet
-      (& body ...))
+`(with-store cabinet 
+   (& body ...))`
 
 ## Installation
 
