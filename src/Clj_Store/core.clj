@@ -8,37 +8,40 @@
 (declare *store*)
 
 (defn s-new
-  "Creates a new file with the specified name."
-  [file]
+  "Creates a new store or file."
+  ([] (s-new *store*))
+  ([file]
   (if (false? (.exists (File. file)))
-    (-> file File. .createNewFile)))
+    (-> file File. .createNewFile))))
 
 (defmacro with-store
   "Creates - if one does not already exist - a new file, and evaluates
   the body."
   [file & body]
-  (s-new file)
   `(binding [*store* ~file]
+  (s-new)
      ~@body))
 
 (defn s-read
-  "Reads the map inside the file."
-  [file]
+  "Reads the map inside the store or a file."
+  ([] (s-read *store*))
+  ([file]
   (let [f (-> file slurp*)]
-    (if (empty? f) {} (read-string f))))
+    (if (empty? f) {} (read-string f)))))
 
 (defn s-clean
-  "Removes the contents of a file."
-  [file]
-  (spit file ""))
+  "Removes the contents of a store or a file."
+  ([] (s-clean *store*))
+  ([file]
+  (spit file "")))
 
 (defn s-keys
-  "Returns a sequence of the keys in the file."
+  "Returns a sequence of the keys in the store."
   []	
   (-> *store* s-read keys))
 
 (defn s-vals
-  "Returns a sequence of the values in the file."
+  "Returns a sequence of the values in the store."
   []
   (-> *store* s-read vals))
 
@@ -53,7 +56,7 @@
   (reduce get (s-read *store*) ks))
 
 (defn s-assoc
-  "Adds a single key to a file."
+  "Adds a single key to the store."
   [key val]
   (let [f (ref (s-read *store*))]
     (dosync (alter f assoc key val)
@@ -68,7 +71,7 @@
     (spit *store* @contents)))
 
 (defn s-dissoc
-  "Removes a single key from a file."
+  "Removes a single key from the store."
   [key]
   (let [f (ref (s-read *store*))]
     (dosync (alter f dissoc key)
@@ -76,14 +79,12 @@
 
 (defn s-add
   "Inserts new key/vals or updates the value of already existing ones
-  an arbitrary number of key/vals. If :create? is true, and a file 
-  with the name does not already exist in the directory then a new 
-  file will be created."
+  an arbitrary number of key/vals."
   [hmap]  
   (spit *store* (merge (s-read *store*) hmap)))
 
 (defn s-update
-  "Updates the value of already existing keys."
+  "Updates the value of keys already existing within the store."
   [hmap]
   (let [contents (ref (s-read *store*))
 	common-keys (ref (filter #(contains? @contents (key %)) hmap))]
