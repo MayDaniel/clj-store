@@ -10,30 +10,30 @@
 (defn s-new
   "Creates a new store or file."
   ([file]
-  (when (false? (.exists (File. file)))
-    (-> file File. .createNewFile)
-    (spit file "")) file))
+     (when (false? (.exists (File. file)))
+       (-> file File. .createNewFile)
+       (spit file "")) file))
 
 (defn s-read
   "Reads the map inside the store or a file."
   ([] (s-read @*store*))
   ([file]
-  (let [f (-> file slurp*)]
-    (if (empty? f) {} (read-string f)))))
+     (let [f (-> file slurp*)]
+       (if (empty? f) {} (read-string f)))))
 
 (defmacro with-store
   "Creates - if one does not already exist - a new file, and evaluates
   the body."
   [file & body]
   `(binding [*store* (ref (s-read (s-new ~file)))]
-  ~@body
-  (spit ~file @*store*)))
+     ~@body
+     (spit ~file @*store*)))
 
 (defn s-clean
   "Removes the contents of a store or a file."
   ([] (s-clean *store*))
   ([file]
-  (spit file "")))
+     (spit file "")))
 
 (defn s-keys
   "Returns a sequence of the keys in the store."
