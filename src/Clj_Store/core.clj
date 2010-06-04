@@ -9,10 +9,10 @@
 
 (defn s-new
   "Creates a new store or file."
-  ([file]
-     (when (false? (.exists (File. file)))
-       (-> file File. .createNewFile)
-       (spit file "")) file))
+  [file]
+  (when (false? (.exists (File. file)))
+    (-> file File. .createNewFile)
+    (spit file "")) file)
 
 (defn s-read
   "Reads the map inside the store or a file."
