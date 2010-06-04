@@ -26,10 +26,6 @@ Wrap commands with `with-store`.
 - From source? Leiningen.
 - Add `[clj-store "0.1.0"]` to your dependencies in project.clj.
 
-## Idea repository
-
-- A Store type.
-
 ## License
 
 Clj-Store is licensed under the Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
