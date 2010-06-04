@@ -15,8 +15,8 @@ Wrap commands with `with-store`.
 * `(s-dissoc key)`             - "Removes single key from the store"
 * `(s-add hmap)`               - "Inserts new key/vals or updates the value of already existing ones an arbitrary number of key/vals.
 * `(s-update hmap)`            - "Updates the value of already existing keys."
-* `(s-read)`                   - "Reads the map inside the store."
-* `(s-clean)`                  - "Removes the contents of a file."
+* `(s-read file)`              - "Reads the map inside the store."
+* `(s-clean file)`             - "Removes the contents of a file."
 
 `(with-store "foo.bar"
    (& body ...))`

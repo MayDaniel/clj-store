@@ -16,9 +16,9 @@
 
 (defn s-read
   "Reads the map inside the store or a file."
-  ([file]
-     (let [f (-> file slurp*)]
-       (if (empty? f) {} (read-string f)))))
+  [file]
+  (let [f (-> file slurp*)]
+    (if (empty? f) {} (read-string f))))
 
 (defmacro with-store
   "Creates - if one does not already exist - a new file, and evaluates
@@ -30,9 +30,8 @@
 
 (defn s-clean
   "Removes the contents of a store or a file."
-  ([] (s-clean *store*))
-  ([file]
-     (spit file "")))
+  [file]
+  (spit file ""))
 
 (defn s-keys
   "Returns a sequence of the keys in the store."
