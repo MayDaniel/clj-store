@@ -16,7 +16,6 @@
 
 (defn s-read
   "Reads the map inside the store or a file."
-  ([] (s-read @*store*))
   ([file]
      (let [f (-> file slurp*)]
        (if (empty? f) {} (read-string f)))))
