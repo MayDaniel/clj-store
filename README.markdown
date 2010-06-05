@@ -18,8 +18,8 @@ Wrap commands with `with-store`.
 * `(s-read file)`              - "Reads the map inside the store."
 * `(s-clean file)`             - "Removes the contents of a file."
 
-`(with-store "foo.bar"
-   (& body ...))`
+    (with-store "foo.bar"
+      (& body ...))
 
 ## Installation
 
