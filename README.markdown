@@ -28,7 +28,7 @@ Wrap commands with `with-store`.
 
 ## Installation
 
-- From source? Leiningen.
+- Leiningen.
 - Add `[clj-store "0.1.0"]` to your dependencies in project.clj.
 
 ## License

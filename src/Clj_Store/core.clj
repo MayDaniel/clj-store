@@ -1,9 +1,8 @@
 (ns Clj-Store.core
   (:use [clojure.contrib.duck-streams :only [spit slurp*]])
-  (:import java.io.File))
+  (:import [java.io File]))
 
 ;; "s-" is used a prefix to avoid definition conflicts.
-;; The paramater "file" may be absolute or relative.
 
 (declare *store*)
 
