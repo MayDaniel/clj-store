@@ -11,7 +11,8 @@
   [file]
   (when (false? (.exists (File. file)))
     (-> file File. .createNewFile)
-    (spit file "")) file)
+    (spit file ""))
+  nil)
 
 (defn s-read
   "Reads the map inside the store or a file."
@@ -55,27 +56,31 @@
 (defn s-assoc
   "Adds a single key to the store."
   [key val]
-  (dosync (alter *store* assoc key val)))
+  (dosync
+   (alter *store* assoc key val)))
 
 (defn s-assoc-in
   "See assoc-in."
   [[k & ks] v]
   (let [key-args (into [k] ks)]
-    (dosync (alter *store* merge (assoc-in @*store* key-args v)))))
+    (dosync
+     (alter *store* merge (assoc-in @*store* key-args v)))))
 
 (defn s-dissoc
   "Removes a single key from the store."
   [key]
-  (dosync (alter *store* dissoc key)))
+  (dosync
+   (alter *store* dissoc key)))
 
 (defn s-add
   "Inserts new key/vals or updates the value of already existing ones
   an arbitrary number of key/vals."
-  [hmap]  
-  (dosync (alter *store* merge hmap)))
+  [map]  
+  (dosync
+   (alter *store* merge map)))
 
 (defn s-update
   "Updates the value of keys already existing within the store."
-  [hmap]
-  (let [common-keys (ref (filter #(contains? @*store* (key %)) hmap))]
-    (dosync (alter *store* merge @common-keys))))
+  [map]
+  (dosync
+   (alter *store* merge (filter #(contains? @*store* (key %)) map))))
