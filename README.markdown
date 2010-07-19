@@ -2,7 +2,7 @@
 
 A small, superficial read/write key/val configuration utility.
 
-You should definitely prefer Licenser's [StupidDB](http://github.com/licenser/stupiddb) to this.
+If you were looking to use something like this, I recommend Licenser's [StupidDB](http://github.com/licenser/stupiddb) instead.
 
 ## Usage
 
