@@ -2,6 +2,8 @@
 
 A small, superficial read/write key/val configuration utility.
 
+You should definitely prefer Licenser's [StupidDB](http://github.com/licenser/stupiddb) to this.
+
 ## Usage
 
 Wrap commands with `with-store`.
