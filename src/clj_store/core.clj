@@ -13,5 +13,5 @@
 
 (defmacro with-store [file & body]
   `(spit ~file
-         (-> (read-store file)
+         (-> (read-store ~file)
              ~@body)))
