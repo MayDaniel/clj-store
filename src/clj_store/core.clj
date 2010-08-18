@@ -24,7 +24,7 @@
   ([store fun & argseq] (spit store (apply fun (in store) argseq))))
 
 (defmacro with-out [store & body]
-  `(spit ~store (->> (in ~store) ~@body)))
+  `(spit ~store (-> (in ~store) ~@body)))
 
 (defmethod print-method File [file ^Writer w]
   (.write w (slurp file)))
