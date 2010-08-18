@@ -2,5 +2,5 @@
   (:use [clj-store.core] :reload-all)
   (:use [clojure.test]))
 
-(deftest replace-me ;; FIXME: write
+(deftest replace-me
   (is false))
