@@ -20,7 +20,7 @@
   ([store fun & argseq] (apply fun (in store) argseq)))
 
 (defn out
-  ([store fun] (split store (fun (in store))))
+  ([store fun] (spit store (fun (in store))))
   ([store fun & argseq] (spit store (apply fun (in store) argseq))))
 
 (defmacro with-out [store & body]
