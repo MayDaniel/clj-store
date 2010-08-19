@@ -28,7 +28,7 @@
 
 (defn out
   ([store fun] (spit store (fun (in store))))
-  ([store fun & argseq] (spit store (apply fun (in store) argseq))))
+  ([store fun & argseq] (out store #(apply fun % argseq))))
 
 (defmacro with-out [store & body]
   `(spit ~store (-> (in ~store) ~@body)))
