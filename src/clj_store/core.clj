@@ -6,13 +6,20 @@
 (defn exists? [^File file]
   (.exists file))
 
-(defn create [^File file]
-  (when-not (exists? file) (spit file {})))
+(defn create
+  "If strict is true, and the file has data not contained
+   in a map, an empty map will replace it."
+  [^File file ^Boolean strict]
+  (when (or (not (exists? file))
+            (not (and (true? strict)
+                      (exists? file)
+                      (-> file slurp read-string map?))))
+    (spit file {})))
 
 (defalias delete io/delete-file)
 
-(defn init [^String name]
-  (-> name io/file create))
+(defn init [^String name & {:keys [strict]}]
+  (-> name io/file (create (true? strict))))
 
 (defn in
   ([store] (do (init store) (load-file store)))
