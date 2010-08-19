@@ -10,10 +10,10 @@
   "If strict is true, and the file has data not contained
    in a map, an empty map will replace it."
   [^File file ^Boolean strict]
-  (when (or (not (exists? file))
-            (not (and (true? strict)
-                      (exists? file)
-                      (-> file slurp read-string map?))))
+  (when-not (or (exists? file)
+                (and (true? strict)
+                     (exists? file)
+                     (-> file slurp read-string map?)))
     (spit file {})))
 
 (defalias delete io/delete-file)
