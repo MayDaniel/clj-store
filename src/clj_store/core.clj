@@ -33,5 +33,5 @@
 (defmacro with-out [store & body]
   `(spit ~store (-> (in ~store) ~@body)))
 
-(defmethod print-method File [file ^Writer w]
-  (.write w (slurp file)))
+(defmethod print-method File [^File file ^Writer w]
+  (.write w (str "#<File[" file "] " (slurp file) ">")))
