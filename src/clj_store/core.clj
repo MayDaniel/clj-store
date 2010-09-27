@@ -23,14 +23,14 @@
 
 (defn in
   ([store] (do (init store) (load-file store)))
-  ([store fun] (fun (in store)))
-  ([store fun & argseq] (apply fun (in store) argseq)))
+  ([store f] (f (in store)))
+  ([store f & argseq] (apply f (in store) argseq)))
 
 (defn out
-  ([store fun] (spit store (fun (in store))))
-  ([store fun & argseq] (out store #(apply fun % argseq))))
+  ([store f] (spit store (f (in store))))
+  ([store f & argseq] (out store #(apply f % argseq))))
 
-(defmacro with-out [store & body]
+(defmacro with-store [store & body]
   `(spit ~store (-> (in ~store) ~@body)))
 
 (defmethod print-method File [^File file ^Writer w]
